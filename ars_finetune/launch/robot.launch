@@ -1,0 +1,10 @@
+<launch>
+  <arg name="filepath" default="$(find ars_finetune)/src/ars_finetune/output_file/info.txt"/>
+
+  <!-- Semantic Segmentation node -->
+  <node name="semantic_segmentation" pkg="ars_finetune" type="segmentation.py" output="screen"/>
+  <node name="file_sender" pkg="ars_finetune" type="file_sender.py" output="screen">
+    <param name="filepath" value="$(arg filepath)"/>
+  </node>
+
+</launch>
