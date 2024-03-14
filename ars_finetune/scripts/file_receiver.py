@@ -20,6 +20,7 @@ def callback(data):
     rospack = rospkg.RosPack()
     package_path = rospack.get_path('ars_finetune') + '/src/ars_finetune/output_file/'
     file_path = package_path + 'info.txt'
+    os.makedirs(package_path + 'images', exist_ok=True)
 
     if received_txt == False:
         with open(file_path, 'w') as file:
@@ -51,7 +52,6 @@ if __name__ == "__main__":
     # The 'exist_ok' parameter is set to True, which means the function won't raise an error if the directory already exists.
     rospack = rospkg.RosPack()
     package_path = rospack.get_path('ars_finetune')
-    os.makedirs(package_path + '/src/ars_finetune/output_file/images', exist_ok=True)
 
     rospy.init_node('file_receiver', anonymous=True)
     rospy.Subscriber('file_transfer', String, callback)

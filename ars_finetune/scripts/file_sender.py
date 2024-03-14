@@ -5,6 +5,7 @@ from std_msgs.msg import String
 import rospkg
 import time
 import base64
+import shutil
 
 file_send = False
 recieve_notice = ''
@@ -78,10 +79,17 @@ if __name__ == "__main__":
             rospy.loginfo("Sending file: %s", filepath)
             content = send_img(filepath)
             pub.publish(content)
+            print(i)
             while(1):
                 if recieve_notice == i:
                     break
         key_pub.publish("File sending done")
+
+        try:
+            shutil.rmtree(package_path + '/src/ars_finetune/output_file/')
+        except Exception as e:
+            rospy.loginfo(f"Error deleting {directory_path}: {e}")
+
         key_pub.publish("1")
 
         file_send = False  

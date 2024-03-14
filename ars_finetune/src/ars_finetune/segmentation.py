@@ -41,6 +41,7 @@ def button_input_callback(data):
 	global start_segmentation
 	if message == "1":
 		start_segmentation = True
+		os.makedirs(cfg.OUTPUR_DIR + '/images', exist_ok=True)
 	if message == "2":
 		start_segmentation = False
 	if message == "3":
@@ -120,9 +121,7 @@ model.to(device)
 
 interp = nn.Upsample(size=(cfg.OUTPUT_SIZE[1], cfg.OUTPUT_SIZE[0]), mode='bilinear', align_corners=True)
 
-# Create the directory
-# The 'exist_ok' parameter is set to True, which means the function won't raise an error if the directory already exists.
-os.makedirs(cfg.OUTPUR_DIR + '/images', exist_ok=True)
+
 
 rospy.loginfo("Started segmentation")
 image_data = None
