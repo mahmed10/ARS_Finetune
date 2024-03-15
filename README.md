@@ -13,6 +13,10 @@ ROS Noetic in the both Server and Edge node. To install ROS Noetic please follow
 6. Build the project with catkin_make `catkin_make`
 
 
+## Cross check
+Before running the code please make sure, you have following items downloaded
+1. model_umbc.pth in the checkpoints
+
 ## Run the Code
 Open terminal, and type the following command
 1. For Server `roslaunch ars_finetune server.launch`
