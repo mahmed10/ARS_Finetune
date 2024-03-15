@@ -2,4 +2,4 @@
 
 ## Prerequisite 
 ROS Noetic in the both Server and Edge node. To install ROS Noetic please follow thes steps: 
-[http://wiki.ros.org/noetic/Installation/Ubuntu](http://wiki.ros.org/noetic/Installation)
+[ROS Noetic Installation Steps](http://wiki.ros.org/noetic/Installation)
