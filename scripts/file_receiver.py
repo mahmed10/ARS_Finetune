@@ -21,9 +21,12 @@ def callback(data):
     package_path = rospack.get_path('ars_finetune') + '/src/ars_finetune/output_file/'
     file_path = package_path + 'info.txt'
     os.makedirs(package_path + 'images', exist_ok=True)
+    meta_file_path = package_path + 'meta.txt'
 
     if received_txt == False:
         with open(file_path, 'w') as file:
+            file.write(data.data)
+        with open(meta_file_path, 'a') as file:
             file.write(data.data)
         received_txt = True
         rospy.loginfo("Received and saved file: %s", file_path)
