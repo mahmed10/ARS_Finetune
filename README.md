@@ -8,8 +8,9 @@ ROS Noetic in the both Server and Edge node. To install ROS Noetic please follow
 1. Create a catkin workspace `mkdir -p catkin_ws/src`
 2. Navigate to src folder `cd catkin_ws/src`
 3. Clone the repo in the src folder `git clone`
-4. Navigate to catkin_ws folder `cd ..`
-5. Build the project with catkin_make `catkin_make`
+4. Make all the py excecutable
+5. Navigate to catkin_ws folder `cd ..`
+6. Build the project with catkin_make `catkin_make`
 
 
 ## Run the Code
