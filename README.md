@@ -10,3 +10,9 @@ ROS Noetic in the both Server and Edge node. To install ROS Noetic please follow
 3. Clone the repo in the src folder `git clone`
 4. Navigate to catkin_ws folder `cd ..`
 5. Build the project with catkin_make `catkin_make`
+
+
+## Run the Code
+Open terminal, and type the following command
+1. For Server `roslaunch ars_finetune server.launch`
+2. For Edge `roslaunch ars_finetune robot.launch`
