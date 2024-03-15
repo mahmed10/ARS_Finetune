@@ -9,7 +9,7 @@ import os
 def callback(data):
     rospack = rospkg.RosPack()
     package_path = rospack.get_path('ars_finetune') + '/src/ars_finetune/checkpoints/'
-    file_path = package_path + 'model_umbc_new.pth'
+    file_path = package_path + 'model_umbc.pth'
 
 
     with open(file_path, 'wb') as file:
