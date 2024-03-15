@@ -1,3 +1,6 @@
 pip install pillow==2.2.2
 pip install PyAutoGUI
 pip install Keyboard
+pip install tqdm
+pip install torch torchvision torchaudio
+pip install easydict
