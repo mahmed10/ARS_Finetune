@@ -165,6 +165,8 @@ catkin_install_python(PROGRAMS
  scripts/keyboard_input_publisher.py
  scripts/start_annotation.py
  scripts/start_annotation2.py
+ scripts/weight_sender.py
+ scripts/weight_receiver.py
  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

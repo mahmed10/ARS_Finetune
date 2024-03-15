@@ -7,4 +7,6 @@
     <param name="filepath" value="$(arg filepath)"/>
   </node>
 
+  <node name="weight_receiver" pkg="ars_finetune" type="weight_receiver.py" output="screen"/>
+
 </launch>

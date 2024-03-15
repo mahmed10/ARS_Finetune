@@ -14,8 +14,8 @@ class GTA5DataSet(BaseDataset):
                               26: 13, 27: 14, 28: 15, 31: 16, 32: 17, 33: 18}
 
     def get_metadata(self, name):
-        img_file = self.root / 'GTA5' / 'images' / name
-        label_file = self.root / 'GTA5' / 'labels' / name
+        img_file = self.root / 'GTA5' / 'Images' / name
+        label_file = self.root / 'GTA5' / 'Labels' / name
         return img_file, label_file
 
     def __getitem__(self, index):

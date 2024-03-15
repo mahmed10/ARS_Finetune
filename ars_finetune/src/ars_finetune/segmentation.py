@@ -29,6 +29,8 @@ bridge = CvBridge()
 current_value = 1.0
 voltage_value = 2.9
 start_segmentation = False
+weight_send = False
+recieve_notice = ''
 
 def status_callback(msg):
 	global current_value
@@ -39,6 +41,7 @@ def button_input_callback(data):
 	# Callback function for handling incoming messages from /button_input
 	message = data.data
 	global start_segmentation
+	global weight_send
 	if message == "1":
 		start_segmentation = True
 		os.makedirs(cfg.OUTPUR_DIR + '/images', exist_ok=True)
@@ -46,6 +49,13 @@ def button_input_callback(data):
 		start_segmentation = False
 	if message == "3":
 		start_segmentation = False
+	if message =="6":
+		start_segmentation = False
+		weight_send = True
+
+def recieve_notice_callback(data):
+	global recieve_notice
+	recieve_notice = data.data
 
 
 def semantic_seg(data):
@@ -134,10 +144,31 @@ rospy.Subscriber("/status", Status, status_callback, queue_size=1)
 mask_pub = rospy.Publisher('/segmentation/mask', CompressedImage, queue_size=1)
 rospy.Subscriber("/axis/image_raw/compressed", CompressedImage, image_call, queue_size=1)
 button_input_sub = rospy.Subscriber('/button_input', String, button_input_callback)
+notification = rospy.Subscriber('/weight_recive_notification', String, recieve_notice_callback)
+key_pub = rospy.Publisher('button_input', String, queue_size=10)
 # rospy.spin()
 while not rospy.is_shutdown():
 	rospy.Rate(30.0).sleep()
 	# print(start_segmentation)
+	# print(recieve_notice)
+	if weight_send:
+		while(1):
+			# print(recieve_notice)
+			if recieve_notice == 'recieved weight file':
+				break
+		key_pub.publish("Weight sending done")
+		device = cfg.GPU_ID
+		model = get_deeplab_v2(num_classes=cfg.NUM_CLASSES, multi_level=cfg.MULTI_LEVEL[0])
+		checkpoint = torch.load(cfg.checkpoint)
+		model.load_state_dict(checkpoint)
+		model.eval()
+		model.to(device)
+
+		interp = nn.Upsample(size=(cfg.OUTPUT_SIZE[1], cfg.OUTPUT_SIZE[0]), mode='bilinear', align_corners=True)
+		weight_send = False
+		key_pub.publish("Weight replacement done")
+		key_pub.publish("1")
+
 	if image_data is None:
 		continue
 	if not start_segmentation:

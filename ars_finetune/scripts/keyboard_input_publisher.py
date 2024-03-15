@@ -87,6 +87,10 @@ class ROSGUI:
             display_message = "Segmentation Stoped"
         elif message == "4":
             display_message = "Annotation Started"
+        elif message == "5":
+            display_message = "FineTune Started"
+        elif message == "6":
+            display_message = "Segmentation Stoped"
         else:
             display_message = message
         self.terminal_text.insert(tk.END, display_message + '\n')

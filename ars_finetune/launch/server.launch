@@ -2,5 +2,6 @@
   <node name="gui_output" pkg="ars_finetune" type="keyboard_input_publisher.py" output="screen"/>
   <node name="file_reviver" pkg="ars_finetune" type="file_receiver.py" output="screen"/>
   <node name="annotation" pkg="ars_finetune" type="start_annotation.py" output="screen"/>
-  <!-- <node name="annotation2" pkg="ars_finetune" type="start_annotation2.py" output="screen"/> !-->
+  <node name="finetune" pkg="ars_finetune" type="fine_tune.py" output="screen"/>
+  <node name="weight_sender" pkg="ars_finetune" type="weight_sender.py" output="screen"/>
 </launch>
