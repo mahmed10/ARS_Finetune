@@ -16,7 +16,8 @@ ROS Noetic in the both Server and Edge node. To install ROS Noetic please follow
 
 ## Cross check
 Before running the code please make sure, you have following items downloaded
-1. model_umbc.pth in the checkpoints folder, if not type command in the cmd ``gdown 'https://drive.google.com/uc?id=1kKPXTxAPg2iHejfQHIjiuGbEcQXqrLGl' -O ARS_Finetune/src/ars_finetune/checkpoints/``
+1. model_umbc.pth in the checkpoints folder, if not type command in the cmd
+   ``gdown 'https://drive.google.com/uc?id=1kKPXTxAPg2iHejfQHIjiuGbEcQXqrLGl' -O ARS_Finetune/src/ars_finetune/checkpoints/``
 
 ## Run the Code
 Open terminal, and type the following command
